@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        font-size: 11px;
+      }
+
+      #wrapper {
+        max-width: 600px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 100%;
+        border: 3px solid #ddd;
+        table-layout: fixed;
+      }
+
+      #wrapper td {
+        vertical-align: top;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+
+      .sidebar-column {
+        width: 30%;
+        box-sizing: border-box;
+      }
+
+      .content-column {
+        width: 70%;
+        box-sizing: border-box;
+      }
+
+      .content-inner-column {
+        width: 50%;
+        box-sizing: border-box;
+      }
+
+      .box1 {
+        padding: 0 !important;
+      }
+
+      .box1 img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .box2 {
+        text-align: left;
+        background: #ccc;
+        border: 3px solid #ddd;
+      }
+
+      .box10 {
+        border-left: 3px solid #ddd !important;
+        border-right: none !important;
+        border-bottom: none !important;
+        margin: 0;
+        box-sizing: border-box !important;
+      }
+
+      .box11 {
+        border-collapse: collapse;
+        border: none !important;
+        margin: 0;
+        box-sizing: border-box !important;
+      }
+
+      .box13 {
+        border-left: 3px solid #ddd !important;
+        border-bottom-color: aqua !important;
+      }
+
+      .box7 {
+        border: 3px solid #ddd;
+      }
+
+      .box8 {
+        border-top-color: aqua !important;
+        border-left: 3px solid #ddd !important;
+      }
+
+      .box9 {
+        border-collapse: collapse;
+        border: 0 !important;
+        border-left: 3px solid #ddd !important;
+      }
+
+      .star-heading {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .star-heading h2 {
+        margin: 0;
+      }
+
+      .footer {
+        padding: 10px;
+        border: 1px solid #ddd;
+        background: #ccc;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer-info {
+        gap: 10px;
+      }
+
+      .footer-social {
+        gap: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="wrapper">
+      <colgroup>
+        <col class="sidebar-column" />
+        <!-- Cột 1 - Danh mục 30% -->
+        <col class="content-inner-column" />
+        <!-- Cột 2 - Nội dung 35% -->
+        <col class="content-inner-column" />
+        <!-- Cột 3 - Nội dung 35% -->
+      </colgroup>
+
+      <tr>
+        <td colspan="3" class="box1">
+          <img
+            src="https://www.dignexus.com/assets/images/news-portal-banner.png"
+            alt="W3Schools.com"
+            width="600px"
+            height="130px"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3" class="box1 box2">
+          <a href="#">Trang chủ</a> | <a href="#">Tin tức</a> |
+          <a href="#">Giải trí</a> | <a href="#">Thể thao</a> |
+          <a href="#">Liên hệ</a>
+        </td>
+      </tr>
+
+      <tr>
+        <td rowspan="4" class="box3">
+          <h3>Danh mục</h3>
+          <ul>
+            <li><a href="#">Công nghệ</a></li>
+            <li><a href="#">Giáo dục</a></li>
+            <li><a href="#">Thời sự</a></li>
+            <li><a href="#">Thể thao</a></li>
+          </ul>
+          <h3>Tin tức</h3>
+          <ul class="box4">
+            <li>
+              <a href="#"
+                >Ông Trunb không hài lòng,lập tức giục Feb hạ lãi suất
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                >Cao tốc Biên Hòa-Vũng Tàu, sân bay Long Thành cơ bản xong trong
+                năm 2025.</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                >Bộ tài chính: Giao dịch tài sản số sẽ phải đóng thuế.</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                >Quốc gia NATO nêu điều sẽ gây ra cơn ác mộng cho Nga.</a
+              >
+            </li>
+          </ul>
+        </td>
+
+        <td colspan="2" class="box13">
+          <div class="star-heading">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/2153px-Star_icon_stylized.svg.png"
+              alt="W3Schools.com"
+              width="15px"
+              height="15px"
+            />
+            <h2>Bài viết nổi bật</h2>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <!-- cột 1 của bài viết -->
+        <td class="box10 content-inner-column">
+          <img
+            src="https://image.tinnhanhchungkhoan.vn/300x200/Uploaded/2025/wpxlcdjwi/2025_03_06/thumbnail-2-13-6806.png"
+            alt="W3Schools.com"
+            width="215px"
+            height="100px"
+          />
+          <p>
+            <b
+              >VPS Investory - Chuyện đầu tư: Truyền cảm búngkhỏi đầu tư | Tin
+              nhanh chứng khoán</b
+            >
+          </p>
+          <p>
+            <i
+              >Với mong muốn tạo cầu nối tới cộng đồng đang tìm hiểu về đầu tư,
+              đặc biệt là quan tâm tới thị trường chứng khoán để cùng chia sẻ
+              những câu chuyên, những kinh nghiệm đầu tư thú vị...</i
+            >
+          </p>
+          <img
+            src="https://locnuochaiphong.vn/wp-content/uploads/2018/07/Button-1.png"
+            alt="W3Schools.com"
+            width="80px"
+            height="18px"
+          />
+
+          <img
+            src="https://www.align.vn/storage/2024/09/Google-Business-Thumbnail-300x200.png"
+            alt="W3Schools.com"
+            width="215px"
+            height="100px"
+          />
+          <p>
+            <b
+              >Google Business - Cách tạo tài khoản Google Business cho doanh
+              nghiệp</b
+            >
+          </p>
+          <p>
+            <i
+              >Google Business là một trong những công cụ quảng cáo trực tuyến
+              mạnh mẽ nhất hiện nay. Để sử dụng dịch vụ này, bạn cần tạo tài
+              khoản Google Business cho doanh nghiệp của mình...</i
+            >
+          </p>
+          <img
+            src="https://locnuochaiphong.vn/wp-content/uploads/2018/07/Button-1.png"
+            alt="W3Schools.com"
+            width="80px"
+            height="18px"
+          />
+        </td>
+        <!-- cột 2 của bài viết -->
+        <td class="box11 content-inner-column">
+          <img
+            src="https://tse-tesol.edu.vn/wp-content/uploads/2024/11/word-image-31706-1-300x200.png"
+            alt="W3Schools.com"
+            width="215px"
+            height="100px"
+          />
+          <p>
+            <b
+              >Các cấp độ tiếng anh cho trẻ em là gì? Phân loại cấp độ tiếng anh
+              cho trẻ em theo năng lực</b
+            >
+          </p>
+          <p>
+            <i
+              >Để giúp trẻ em tiến bộ nhanh chóng và phát triển tốt nhất, nhiều
+              phụ huynh và giáo viên đã lựa chọn định hướng học tiếng Anh dựa
+              trên các kỳ thi như Cambridge Young Learnes English Tets...</i
+            >
+          </p>
+          <img
+            src="https://locnuochaiphong.vn/wp-content/uploads/2018/07/Button-1.png"
+            alt="W3Schools.com"
+            width="80px"
+            height="18px"
+          />
+          <img
+            src="https://nanotravel.vn/wp-content/uploads/2024/03/image-1-300x200.png"
+            alt="W3Schools.com"
+            width="215px"
+            height="100px"
+          />
+          <p>
+            <b
+              >Bà Nà Hills-điểm đến hàng đầu tại Đà Nẵng, luôn thu hút hàng
+              triệu du khách.</b
+            >
+          </p>
+          <p>
+            <i
+              >Năm 2025 Banahills Giá Vé có nhiều thay đổi quan trọng, giúp nâng
+              cao trải nghiệm du khách và mở rộng chính sách ưu đãi. Những điều
+              chỉnh này không chỉ mang lại sự tiện lợi trong việc mua vé...</i
+            >
+          </p>
+          <img
+            src="https://locnuochaiphong.vn/wp-content/uploads/2018/07/Button-1.png"
+            alt="W3Schools.com"
+            width="80px"
+            height="18px"
+          />
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="box9">
+          <img
+            src="https://icons.veryicon.com/png/o/miscellaneous/common-icons-6/more-106.png"
+            alt="W3Schools.com"
+            width="15px"
+            height="15px"
+          />
+          <h2>Các bài viết khác</h2>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="box8">
+          <ul>
+            <li>
+              <a href="#"
+                >Iphone màn hinh gập sẽ được Apple trang bị "vũ khí đặc biệt"</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                >Tỉnh thành có tốc độ Internet nhanh nhất Việt Nam: Bất ngờ cái
+                tên dẫn đầu.</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                >Chùm ảnh hé lộ trọn vẹn thiết kế của loại ip 17 sắp ra mắt.</a
+              >
+            </li>
+          </ul>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="3" style="padding: 0">
+          <div class="footer">
+            <div class="footer-info">
+              <strong>Bản quyền © 2025 - UDU | Liên hệ: info@udu.com</strong>
+            </div>
+            <div class="footer-social">
+              <span>Theo dõi chúng tôi:</span>
+              <a href="#">Facebook</a> | <a href="#">Twitter</a> |
+              <a href="#">Instagram</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
