@@ -1,0 +1,82 @@
+div {
+  background-color: antiquewhite;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  line-height: 1.6;
+  width: 450px;
+  height: auto;
+  margin: 0 auto;
+  padding: 0 20px 20px 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+#main-title {
+  text-align: center;
+  color: #333;
+  font-size: 2em;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  width: 400px;
+  margin: 0 auto;
+  height: auto;
+  border: 2px dashed #e7be4496;
+  border-radius: 10px;
+  background-color: white;
+}
+
+/* --------------------bộ chọn giả----------------------*/
+li:first-child {
+  border-top: 2px solid #cfa612bd;
+  margin-top: 20px;
+}
+li:last-child {
+  border-bottom: 2px solid #cfa612bd;
+  margin-bottom: 20px;
+}
+li:hover {
+  color: #810404;
+  cursor: pointer;
+  padding: 10px 10px;
+}
+/* bộ chọn nhóm */
+.morning,
+.afternoon,
+.evening {
+  padding: 5px;
+  margin: 5px 20px;
+  border: 0px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.2em;
+}
+.morning {
+  background-color: #0f5da16b;
+}
+.afternoon {
+  background-color: #ca277388;
+}
+.evening {
+  background-color: #62e9b149;
+}
+li:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+.important {
+  font-weight: bold;
+  color: #131212fd;
+}
+/* bộ chọn kết hợp */
+
+.note[data-type="reminder"] {
+  text-align: center;
+  color: #666;
+  font-size: 1.2em;
+}
+/* ----------------------phần nâng cao------------------ */
+li:hover::after {
+  content: "✅";
+}
+input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+}
