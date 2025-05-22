@@ -1,0 +1,91 @@
+.container {
+  width: 70%;
+  height: auto;
+  border: 1px solid #14141454;
+}
+.header img {
+  width: 100%;
+  height: 150px;
+}
+.menu {
+  border: 1px solid #20202093;
+  background-color: #bdb7b7dd;
+  margin: 0.5px 0.5px 0.5px 0.5px;
+}
+.danhmuc {
+  width: 100%;
+  margin: 0.5px 0.3px 0.5px 0.5px;
+  height: auto;
+  border: 1px solid #0a0a0a70;
+  background-color: #cccccc4f;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+/* ---------------------------------------- */
+.main {
+  border: 1px solid #0a0a0a70;
+  margin: 0.5px 0.5px 0.5px 0.5px;
+}
+.news {
+  display: flex;
+  width: 100%;
+  height: auto;
+  border-bottom: 1.5px solid #1ec469d5;
+}
+.news img {
+  width: 15px;
+  height: 15px;
+  margin-top: 18px;
+}
+.news h2 {
+  font-size: 20px;
+  margin-left: 5px;
+}
+.main-content {
+  display: flex;
+  width: 100%;
+  height: auto;
+}
+.main-content-left {
+  padding: 5px 2.5px 0px 2px;
+}
+.main-content-right {
+  padding: 5px 2px 0px 2.5px;
+}
+.main-content-left-item {
+  margin-bottom: 10px;
+}
+.main-content-right-item {
+  margin-bottom: 10px;
+}
+
+/* ---------------------------------------- */
+.morong {
+  display: flex;
+}
+.morong img {
+  width: 15px;
+  height: 15px;
+  margin-top: 18px;
+}
+.morong h2 {
+  font-size: 18px;
+  margin-left: 5px;
+}
+/* -------------------------------------------------------------- */
+.morong-content {
+  border-top: 1.5px solid #1ec469d5;
+}
+/* -----------------------------------footer--------------------------- */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ccc;
+  border: 1px solid #1b19196c;
+  margin: 0.5px 0.5px 0.5px 0.5px;
+  padding: 5px;
+}
