@@ -1,0 +1,918 @@
+* {
+  margin: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.header1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #ff5622cc;
+  border-bottom: 1px solid #dee2e6;
+  padding: 0.5rem 0.5rem;
+}
+.header1 a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+}
+/* ------------------------------thanh menu--------------------------------------- */
+.header2 {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+}
+.menu span {
+  color: #db6f16;
+}
+.menu li {
+  margin: 0px 15px;
+}
+.menu a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2rem;
+}
+
+.menu i {
+  font-size: 1.5rem;
+  color: black;
+  margin-left: 10px;
+}
+.menu li:hover a,
+.menu li:hover i {
+  color: #db6f16;
+}
+.sub-menu {
+  position: absolute;
+  display: none;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: auto;
+  height: auto;
+  border-radius: 5px;
+  z-index: 1000;
+  list-style: none;
+  border: 5px;
+}
+.sub-menu p {
+  margin: 2px 0;
+  color: #120a03;
+}
+.menu li:hover .sub-menu {
+  display: block;
+  z-index: 1000;
+}
+
+.icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon i {
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.82);
+  margin-left: 20px;
+}
+.icon i:hover {
+  color: #db6f16;
+}
+
+/* ----------------------------slide---------------------------- */
+.slider1 {
+  position: relative;
+  display: inline-block;
+}
+.slider1 img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+.buy-now {
+  position: absolute;
+  bottom: 73px; /* Cách đáy 20px */
+  left: 30px; /* Căn giữa theo chiều ngang */
+
+  padding: 10px 20px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 17px 39px;
+  transition: all 0.5s ease;
+}
+.buy-now:hover {
+  background-color: #120a03;
+}
+/* ------------------------------------------------------------------- */
+
+.anhgioithieu {
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 40px 0px 10px;
+  background-color: white;
+}
+.anhgioithieu img {
+  width: 600px;
+  height: auto;
+  border-radius: 5px;
+}
+.gioithieu {
+  display: flex;
+  margin-top: 100px;
+  padding: 0px 30px 0px 30px;
+  background-color: white;
+}
+.gioithieu-text1 {
+  display: flex;
+
+  background-color: white;
+}
+.gioithieu-text h4 {
+  color: #db6f16;
+}
+.gioithieu-text h1 {
+  font-size: 30px;
+  color: #000;
+  margin-top: 10px;
+}
+
+.gioithieu-text p {
+  font-size: 20px;
+  margin-top: 10px;
+  color: #000;
+}
+.gioithieu-text1 ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+.gioithieu-text1 ul li {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.gioithieu-text1 ul li::before {
+  content: "✔️";
+  color: #db6f16;
+}
+.gioithieu-button {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 15px 30px;
+}
+.gioithieu-button:hover {
+  background-color: #120a03;
+}
+/* -------------------------------------- san pham thinh hanh------------------------------------------ */
+.tieude h3 {
+  font-size: 20px;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 0px 10px 0px;
+  color: #db6f16;
+}
+.tieude p {
+  font-size: 39px;
+  text-align: center;
+  padding: 0px 0px 45px 0px;
+  font-weight: bold;
+}
+
+.sanpham {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: 0 auto;
+  height: auto;
+  background-color: white;
+}
+.sanpham img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.sanpham1 {
+  justify-content: space-between;
+  width: 260px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+.sanpham1 a {
+  text-decoration: none;
+  color: #000;
+  font-size: 17px;
+}
+.sanpham1:hover img {
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+.sanpham1:hover a {
+  color: #db6f16;
+}
+.rating1 {
+  margin-top: 2px;
+  color: #dbd816;
+}
+.gia {
+  margin-top: 2px;
+}
+.sale {
+  color: #db6f16;
+  font-weight: bold;
+  font-size: 20px;
+}
+.giagoc {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 10px;
+}
+/* ---------------------------------Top Categories-------------------------------- */
+.topcategories {
+  width: 100%;
+  margin: 0 auto;
+  height: 500px;
+  background-image: url("/meowry/ảnh/anhnen.png");
+  margin-top: 90px;
+}
+.topcategories-text h3 {
+  font-size: 20px;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 0px 0px 0px;
+  color: #db6f16;
+}
+.topcategories-text p {
+  font-size: 39px;
+  text-align: center;
+  padding: 0px 0px 45px 0px;
+  font-weight: bold;
+}
+.topcategories1 {
+  display: flex;
+  justify-content: space-between;
+}
+.topcategories-menu {
+  margin: 0 auto;
+  margin-left: 17px;
+}
+.topcategories-menu p {
+  font-size: 15px;
+  text-align: center;
+  color: #000;
+  margin-top: 10px;
+}
+.topcategories-menu h3 {
+  font-size: 20px;
+  text-align: center;
+  color: #000;
+}
+.topcategories-menu h4 {
+  display: none;
+  font-size: 17px;
+  text-align: center;
+  color: #db6f16;
+  margin-top: 10px;
+  text-decoration: underline;
+}
+.topcategories-menu:hover h4 {
+  display: block;
+}
+.topcategories-menu h4:hover {
+  text-decoration: none;
+}
+.topcategories-menu:hover p {
+  display: none;
+}
+
+.topcategories-menu img {
+  width: 160px;
+  height: 160px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: all 0.7s ease;
+}
+.topcategories-menu a {
+  text-decoration: none;
+  color: #000;
+  font-size: 17px;
+}
+.topcategories-menu:hover a img {
+  transform: scale(1.05);
+}
+
+/* ---------------------------------sản phẩm tốt nhất-------------------------------- */
+
+.sanphambest {
+  display: flex;
+  margin: 0px 0px 30px 0px;
+}
+.sanphambest-text1 {
+  width: 400px;
+  height: 30px;
+}
+.sanphambest-text1 h3 {
+  font-size: 20px;
+  padding: 50px 0px 10px 30px;
+  color: #db6f16;
+}
+.sanphambest-text1 p {
+  font-size: 39px;
+  padding: 0px 0px 10px 30px;
+  font-weight: bold;
+}
+.sanphambest1 {
+  display: flex;
+  margin-left: 40px;
+  width: 700px;
+  height: 300px;
+  margin-top: 150px;
+}
+.sanphambest2 {
+  display: flex;
+  font-size: 14px;
+  width: auto;
+  height: 200px;
+  margin: 0 auto;
+  text-decoration: none;
+}
+.sanphambest2 h3 {
+  text-decoration: none;
+  color: #000;
+}
+.sanphambest2:hover img {
+  transform: scale(1.05);
+}
+.sanphambest2:hover h3 {
+  color: #db6f16;
+}
+
+.sanphambest2 img {
+  width: 130px;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  transition: all 0.3s ease;
+}
+.sanphambest-text2 {
+  background-image: url("/meowry/ảnh/thucungbansethihc.webp");
+  background-size: cover;
+  background-position: center;
+  width: 88%;
+  height: 480px;
+  margin-top: 30px;
+  margin-left: 40px;
+  border-radius: 5px;
+}
+.sanphambest-text2 p {
+  font-size: 20px;
+  color: #db6f16;
+  margin: 20px 0px 0px 30px;
+  z-index: 1;
+}
+.sanphambest-text2 h2 {
+  font-size: 30px;
+  text-align: center;
+  color: #171616;
+  position: relative;
+  z-index: 1;
+}
+.sanphambest-button {
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  color: black;
+  margin-top: 5px;
+}
+.sanphambest-button:hover {
+  text-decoration: none;
+}
+
+/* -------------------------------------------------ưu đãi----------------------- */
+.uudai {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0 0;
+  width: 95%;
+  margin: 0 auto;
+  height: auto;
+}
+
+.uudai-text1,
+.uudai-text2 {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  width: 48%;
+  height: 250px;
+  transition: transform 0.5s ease;
+}
+
+.uudai-text1 {
+  background-image: url("/meowry/ảnh/sub-banner-1.webp");
+  background-size: cover;
+  background-position: center;
+  margin-right: 10px;
+}
+
+.uudai-text2 {
+  background-image: url("/meowry/ảnh/sub-banner-2.webp");
+  background-size: cover;
+  background-position: center;
+  margin-left: 10px;
+}
+
+.uudai-text1:hover,
+.uudai-text2:hover {
+  transform: scale(1.02);
+}
+
+.uudai-text1 p,
+.uudai-text2 p {
+  font-size: 20px;
+  margin-left: 30px;
+  color: #171616;
+  z-index: 2;
+  margin-top: 60px;
+}
+
+.uudai-text1 h2,
+.uudai-text2 h2 {
+  font-size: 25px;
+  margin-left: 30px;
+  color: #1a1919;
+  z-index: 2;
+}
+
+.button-uudai {
+  background-color: white;
+  color: rgb(28, 12, 12);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 15px 30px;
+  position: absolute;
+  left: 30px;
+  bottom: 20px;
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+.button-uudai:hover {
+  background-color: #6108a1;
+  color: white;
+}
+
+/* ---------------------------------------------------------khuyến mãi------------------------------------ */
+.khuyenmai-text:hover {
+  transform: scale(1.02);
+}
+.khuyenmai-text {
+  background-image: url("/meowry/ảnh/cms-banner-1.webp");
+  background-size: cover;
+  background-position: center;
+  width: 95%;
+  transition: all 0.9s ease;
+  height: 100px;
+  margin: 0 auto;
+  padding: 110px 0px 50px 0px;
+  margin: 100px 0px 0px 30px;
+  border-radius: 5px;
+  transition: all 0.9s ease;
+}
+
+.khuyenmai-text p {
+  font-size: 20px;
+  margin-left: 105px;
+  color: #fff;
+  margin-top: -70px;
+
+  z-index: 1;
+}
+.khuyenmai-text h2 {
+  font-size: 30px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  margin-top: 70px;
+}
+.button-khuyenmai {
+  background-color: white;
+  color: rgb(28, 12, 12);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 15px 30px;
+  margin-left: 100px;
+  margin-top: 20px;
+  transition: all 0.5s ease;
+
+  z-index: 1;
+}
+.button-khuyenmai:hover {
+  background-color: #6108a1fa;
+}
+/* --------------------------------------san pham dac biet--------------------------------- */
+.sanphamdacbiet-text h3 {
+  font-size: 20px;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 0px 10px 0px;
+  color: #db6f16;
+}
+.sanphamdacbiet-text p {
+  font-size: 39px;
+  text-align: center;
+  padding: 0px 0px 45px 0px;
+  font-weight: bold;
+}
+
+.sanphamdacbiet {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: 0 auto;
+  height: auto;
+  background-color: white;
+}
+.sanphamdacbiet img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.sanphamdacbiet1 {
+  justify-content: space-between;
+  width: 260px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+.sanphamdacbiet1 a {
+  text-decoration: none;
+  color: #000;
+  font-size: 17px;
+}
+.sanphamdacbiet1:hover img {
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+.sanphamdacbiet1:hover a {
+  color: #db6f16;
+}
+.rating-db {
+  margin-top: 2px;
+  color: #dbd816;
+}
+.gia-db {
+  margin-top: 2px;
+}
+.sale-db {
+  color: #db6f16;
+  font-weight: bold;
+  font-size: 20px;
+}
+.giagoc-db {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 10px;
+}
+/* -------------------------------------------------đánh giá--------------------------------- */
+.danhgiachinh {
+  background-image: url("/meowry/ảnh/anhnen.png");
+  width: 100%;
+  height: 570px;
+  margin-top: 50px;
+}
+.tieude1 {
+  padding: 50px 0px 0px 0px;
+}
+
+.tieude1 h3 {
+  font-size: 45px;
+  color: black;
+  text-align: center;
+}
+.tieude1 p {
+  font-size: 20px;
+  text-align: center;
+  color: #db6f16;
+}
+.danhgia {
+  display: flex;
+  justify-content: space-between;
+  background-image: url("/meowry/ảnh/anhnen.png");
+  background-size: cover;
+}
+.danhgia1 {
+  display: flex;
+  justify-content: space-between;
+  width: 42%;
+  height: 250px;
+  margin: 0 auto;
+  padding: 50px 40px 0px 10px;
+  background-color: white;
+  margin: 50px 30px 0px 30px;
+  border-radius: 5px;
+}
+.danhgia1 img {
+  padding-top: 40px;
+  padding-left: 10px;
+  width: 120px;
+}
+
+.danhgia-text {
+  margin-left: 20px;
+  font-size: 20px;
+}
+.danhgia-text h4 {
+  color: #000;
+}
+.danhgia-text p {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #000;
+}
+/* -------------------------------------logo-pet---------------- */
+.logo-pet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 40px 0px 10px;
+  background-color: white;
+  margin: 30px 0px 70px 0px;
+}
+/* ------------------------------------------------blog --------------------------------*/
+.tieude2 {
+  padding: 50px 0px 0px 0px;
+  border-top: #120a0324 1px solid;
+}
+.tieude2 p {
+  font-size: 24px;
+  text-align: center;
+  color: #db6f16;
+  font-weight: bold;
+}
+.tieude2 h3 {
+  font-size: 45px;
+  color: black;
+  text-align: center;
+}
+.blog {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  background-color: white;
+
+  margin: 20px 0px 70px 0px;
+}
+.blog img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+.blog-text {
+  padding: 0px 15px 0px 15px;
+  position: relative;
+}
+.blog-text a {
+  text-decoration: none;
+  color: #000;
+}
+.blog-text:hover img {
+  transform: scale(1.009);
+  transition: all 0.3s ease;
+}
+.blog-text span {
+  color: #db6f16;
+}
+
+.blog-text h3:hover {
+  color: #db6f16;
+}
+.blog-text p {
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #000;
+}
+.blog-button {
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.blog-button:hover {
+  color: #db6f16;
+}
+/* ---------------------------------lợi ích-------------------------------- */
+.benefits-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: white;
+  overflow-x: auto;
+  scrollbar-width: initial;
+  background-color: #ff5622cc;
+}
+
+.benefits-section::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.benefit-item {
+  display: flex;
+  align-items: center;
+
+  min-width: 350px;
+  margin: 15px 0;
+  padding: 20px;
+  border-right: #000 1px solid;
+}
+.benefit-item:last-child {
+  border-right: none;
+}
+
+.benefit-text h3 {
+  color: white;
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.benefit-text p {
+  color: white;
+  margin: 0;
+  font-size: 18px;
+}
+.benefit-icon {
+  font-size: 40px;
+  color: white;
+  margin-right: 20px;
+  transition: all 0.3s ease;
+}
+.benefit-item:hover .benefit-icon {
+  color: #db6f16;
+
+  transform: scale(1.2);
+  padding-bottom: 15px;
+}
+
+/* --------------------------------footer----------------------------------- */
+.footer {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 30px;
+  background-color: white;
+}
+.footer-content-item {
+  flex-direction: column;
+  width: 30%;
+  height: auto;
+  padding: 20px;
+}
+.footer-content-item li {
+  list-style-type: none;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #000;
+}
+.footer-content-item a {
+  text-decoration: none;
+  color: #000;
+}
+.footer-content-item a:hover {
+  color: #db6f16;
+}
+.footer-content-item h3 {
+  text-align: left;
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.footer-content-item i {
+  font-size: 20px;
+  color: #db6f16;
+  margin-right: 10px;
+}
+
+.email-footer {
+  color: rgb(30, 28, 28);
+  background-color: rgba(220, 220, 220, 0.418);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+
+  font-size: 15px;
+  padding: 15px 100px 15px 10px;
+  margin-top: 20px;
+}
+.button-footer {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 15px 30px;
+  margin-top: 20px;
+}
+.button-footer:hover {
+  background-color: #120a03;
+}
+.social-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 20px;
+  border-top: #120a0329 0.5px solid;
+}
+
+.social-media i {
+  margin: 0 5px;
+  color: #1b1a19;
+  border-radius: 100px;
+  padding: 5px;
+  background-color: gainsboro;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+.social-media i:hover {
+  color: white;
+  background-color: #db6f16;
+}
+.copyright {
+  background-size: cover;
+  text-align: center;
+  font-size: 16px;
+  color: black;
+  border-top: rgba(255, 255, 255, 0.055) 1px solid;
+  padding: 20px 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-color: rgba(225, 229, 234, 0);
+}
+.payment-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  margin-top: -10px;
+}
+.payment-icons i {
+  margin: 0 10px;
+  color: #db6f16;
+}
+
+/* ------------------mũi tên góc màn hình-------------------------- */
+.fixed-arrow {
+  position: fixed;
+  bottom: 100px;
+  right: 50px;
+  background-color: #ff5622e2;
+  color: rgb(17, 16, 16);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+/* ---------------------------------- */
