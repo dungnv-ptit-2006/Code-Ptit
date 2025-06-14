@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh Toán - MT FITNESS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Additional styles for payment page */
+      .payment-hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("assets/payment-bg.jpg") no-repeat center center/cover;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 0 2rem;
+      }
+
+      .payment-hero h1 {
+        font-size: 4.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .payment-container {
+        max-width: 1200px;
+        margin: 5rem auto;
+        padding: 0 2rem;
+        display: flex;
+        gap: 3rem;
+      }
+
+      .payment-form {
+        flex: 2;
+        background: var(--snd-bg-color);
+        border-radius: 20px;
+        padding: 4rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .payment-summary {
+        flex: 1;
+        background: var(--snd-bg-color);
+        border-radius: 20px;
+        padding: 3rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        height: fit-content;
+        position: sticky;
+        top: 2rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: var(--main-color);
+        border-bottom: 1px solid #333;
+        padding-bottom: 1rem;
+      }
+
+      .payment-methods {
+        margin-bottom: 3rem;
+      }
+
+      .payment-method {
+        display: flex;
+        align-items: center;
+        padding: 1.5rem;
+        background: var(--background);
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .payment-method:hover {
+        border-color: var(--main-color);
+      }
+
+      .payment-method.selected {
+        border-color: var(--main-color);
+        box-shadow: 0 0 10px rgba(93, 173, 226, 0.3);
+      }
+
+      .payment-method i {
+        font-size: 3rem;
+        margin-right: 1.5rem;
+        color: var(--main-color);
+      }
+
+      .payment-method-info {
+        flex: 1;
+      }
+
+      .payment-method-info h4 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .payment-method-info p {
+        font-size: 1.4rem;
+        color: #aaa;
+      }
+
+      .payment-method-radio {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--main-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .payment-method-radio::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background: var(--main-color);
+        border-radius: 50%;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .payment-method.selected .payment-method-radio::after {
+        opacity: 1;
+      }
+
+      .form-group {
+        margin-bottom: 2.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: var(--text-color);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 1.5rem;
+        font-size: 1.6rem;
+        background: var(--background);
+        color: var(--text-color);
+        border: 1px solid #333;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        border-color: var(--main-color);
+        box-shadow: 0 0 10px rgba(93, 173, 226, 0.5);
+      }
+
+      .form-row {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .form-row .form-group {
+        flex: 1;
+      }
+
+      .card-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .card-icons img {
+        height: 30px;
+        opacity: 0.7;
+      }
+
+      .card-icons img:hover {
+        opacity: 1;
+      }
+
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        font-size: 1.6rem;
+      }
+
+      .summary-total {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #333;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .btn-pay {
+        width: 100%;
+        padding: 1.5rem;
+        font-size: 1.8rem;
+        background: var(--main-color);
+        color: var(--background);
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .btn-pay:hover {
+        background: #4a9fd6;
+        box-shadow: 0 0 15px rgba(93, 173, 226, 0.5);
+      }
+
+      .secure-payment {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        font-size: 1.4rem;
+        color: #aaa;
+      }
+
+      .secure-payment i {
+        color: #4caf50;
+        font-size: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .payment-container {
+          flex-direction: column;
+        }
+
+        .payment-summary {
+          position: static;
+        }
+
+        .form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.html" class="logo">MT <span>FITNESS</span></a>
+      <div class="menu" id="menu-icon">
+        <i class="bx bx-menu"></i>
+        <ul class="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#plans">Plans</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="payment-hero">
+      <div>
+        <h1>Thanh Toán An Toàn</h1>
+        <p>Hoàn tất thanh toán để bắt đầu hành trình tập luyện của bạn</p>
+      </div>
+    </section>
+
+    <div class="payment-container">
+      <div class="payment-form">
+        <h2 class="section-title">Phương Thức Thanh Toán</h2>
+
+        <div class="payment-methods">
+          <div
+            class="payment-method selected"
+            onclick="selectPaymentMethod(this, 'credit')"
+          >
+            <i class="bx bx-credit-card"></i>
+            <div class="payment-method-info">
+              <h4>Thẻ Tín Dụng/Thẻ Ghi Nợ</h4>
+              <p>Thanh toán bằng thẻ Visa, Mastercard hoặc American Express</p>
+            </div>
+            <div class="payment-method-radio"></div>
+          </div>
+
+          <div
+            class="payment-method"
+            onclick="selectPaymentMethod(this, 'paypal')"
+          >
+            <i class="bx bxl-paypal"></i>
+            <div class="payment-method-info">
+              <h4>PayPal</h4>
+              <p>Thanh toán an toàn qua tài khoản PayPal của bạn</p>
+            </div>
+            <div class="payment-method-radio"></div>
+          </div>
+
+          <div
+            class="payment-method"
+            onclick="selectPaymentMethod(this, 'bank')"
+          >
+            <i class="bx bx-transfer"></i>
+            <div class="payment-method-info">
+              <h4>Chuyển Khoản Ngân Hàng</h4>
+              <p>Chuyển khoản trực tiếp từ tài khoản ngân hàng của bạn</p>
+            </div>
+            <div class="payment-method-radio"></div>
+          </div>
+        </div>
+
+        <!-- Credit Card Form -->
+        <div id="credit-card-form">
+          <div class="form-group">
+            <label for="cardNumber">Số Thẻ</label>
+            <input
+              type="text"
+              id="cardNumber"
+              class="form-control"
+              placeholder="1234 5678 9012 3456"
+            />
+            <div class="card-icons">
+              <img src="assets/visa.png" alt="Visa" />
+              <img src="assets/mastercard.png" alt="Mastercard" />
+              <img src="assets/amex.png" alt="American Express" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cardExpiry">Ngày Hết Hạn</label>
+              <input
+                type="text"
+                id="cardExpiry"
+                class="form-control"
+                placeholder="MM/YY"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="cardCvc">Mã Bảo Mật (CVC)</label>
+              <input
+                type="text"
+                id="cardCvc"
+                class="form-control"
+                placeholder="123"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cardName">Tên Trên Thẻ</label>
+            <input type="text" id="cardName" class="form-control" />
+          </div>
+        </div>
+
+        <!-- PayPal Info (hidden by default) -->
+        <div id="paypal-info" style="display: none">
+          <p>
+            Sau khi nhấn "Thanh Toán", bạn sẽ được chuyển hướng đến trang PayPal
+            để hoàn tất giao dịch.
+          </p>
+        </div>
+
+        <!-- Bank Transfer Info (hidden by default) -->
+        <div id="bank-info" style="display: none">
+          <div class="form-group">
+            <label>Thông Tin Chuyển Khoản</label>
+            <div
+              style="
+                background: var(--background);
+                padding: 2rem;
+                border-radius: 10px;
+              "
+            >
+              <p><strong>Tên Ngân Hàng:</strong> Vietcombank</p>
+              <p><strong>Số Tài Khoản:</strong> 1234567890</p>
+              <p><strong>Tên Tài Khoản:</strong> Công Ty TNHH MT FITNESS</p>
+              <p><strong>Nội Dung:</strong> Tên của bạn + Số điện thoại</p>
+              <p>
+                Sau khi chuyển khoản, vui lòng gửi biên lai đến email:
+                payment@mtfitness.com
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="saveCard" checked />
+            Lưu thông tin thẻ để thanh toán nhanh hơn lần sau
+          </label>
+        </div>
+      </div>
+
+      <div class="payment-summary">
+        <h2 class="section-title">Tóm Tắt Đơn Hàng</h2>
+
+        <div class="summary-item">
+          <span>Gói Tập:</span>
+          <span>PRO</span>
+        </div>
+
+        <div class="summary-item">
+          <span>Thời Hạn:</span>
+          <span>1 Tháng</span>
+        </div>
+
+        <div class="summary-item">
+          <span>Phí Đăng Ký:</span>
+          <span>$0.00</span>
+        </div>
+
+        <div class="summary-item">
+          <span>Thuế (10%):</span>
+          <span>$6.50</span>
+        </div>
+
+        <div class="summary-total">
+          <span>Tổng Cộng:</span>
+          <span>$71.50</span>
+        </div>
+
+        <button class="btn-pay" onclick="processPayment()">
+          <i class="bx bx-lock-alt"></i> Thanh Toán An Toàn
+        </button>
+
+        <div class="secure-payment">
+          <i class="bx bx-check-shield"></i>
+          <span>Giao dịch được bảo mật và mã hóa</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="social">
+        <a href="#"><i class="bx bxl-facebook-circle"></i></a>
+        <a href="#"><i class="bx bxl-instagram-alt"></i></a>
+        <a href="#"><i class="bx bxl-gmail"></i></a>
+      </div>
+      <p class="copyright">&copy; MT Fitness - All Rights Reserved</p>
+      <div class="fixed-arrow">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="script.js"></script>
+    <script>
+      // Payment Page Script
+      let selectedPaymentMethod = "credit";
+
+      function selectPaymentMethod(element, method) {
+        document.querySelectorAll(".payment-method").forEach((method) => {
+          method.classList.remove("selected");
+        });
+        element.classList.add("selected");
+        selectedPaymentMethod = method;
+
+        // Show the appropriate form
+        document.getElementById("credit-card-form").style.display = "none";
+        document.getElementById("paypal-info").style.display = "none";
+        document.getElementById("bank-info").style.display = "none";
+
+        if (method === "credit") {
+          document.getElementById("credit-card-form").style.display = "block";
+        } else if (method === "paypal") {
+          document.getElementById("paypal-info").style.display = "block";
+        } else if (method === "bank") {
+          document.getElementById("bank-info").style.display = "block";
+        }
+      }
+
+      function processPayment() {
+        // Validate form based on selected payment method
+        let isValid = true;
+
+        if (selectedPaymentMethod === "credit") {
+          const requiredFields = [
+            "cardNumber",
+            "cardExpiry",
+            "cardCvc",
+            "cardName",
+          ];
+
+          requiredFields.forEach((field) => {
+            const element = document.getElementById(field);
+            if (!element.value) {
+              element.style.borderColor = "red";
+              isValid = false;
+            } else {
+              element.style.borderColor = "#333";
+            }
+          });
+
+          if (!isValid) {
+            alert("Vui lòng điền đầy đủ thông tin thẻ");
+            return;
+          }
+        }
+
+        // Here you would typically send the payment data to your server
+        // For this demo, we'll just show a success message
+        alert(
+          "Thanh toán thành công! Cảm ơn bạn đã đăng ký khóa học tại MT FITNESS."
+        );
+        window.location.href = "register.html#step-4";
+      }
+
+      // Format card number
+      document
+        .getElementById("cardNumber")
+        .addEventListener("input", function (e) {
+          let value = e.target.value.replace(/\s+/g, "");
+          if (value.length > 0) {
+            value = value.match(new RegExp(".{1,4}", "g")).join(" ");
+          }
+          e.target.value = value;
+        });
+
+      // Format expiry date
+      document
+        .getElementById("cardExpiry")
+        .addEventListener("input", function (e) {
+          let value = e.target.value.replace(/\D/g, "");
+          if (value.length > 2) {
+            value = value.substring(0, 2) + "/" + value.substring(2, 4);
+          }
+          e.target.value = value;
+        });
+    </script>
+  </body>
+</html>

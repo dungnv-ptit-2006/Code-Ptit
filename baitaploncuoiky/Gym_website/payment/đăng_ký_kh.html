@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng Ký Khóa Học - MT FITNESS</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Additional styles for registration page */
+      .registration-hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("assets/register-bg.jpg") no-repeat center center/cover;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 0 2rem;
+      }
+
+      .registration-hero h1 {
+        font-size: 4.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .registration-hero p {
+        font-size: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .registration-container {
+        max-width: 1200px;
+        margin: 5rem auto;
+        padding: 0 2rem;
+      }
+
+      .registration-steps {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+        position: relative;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+      }
+
+      .step-number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--snd-bg-color);
+        color: var(--text-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        border: 2px solid var(--main-color);
+      }
+
+      .step.active .step-number {
+        background: var(--main-color);
+        color: var(--background);
+      }
+
+      .step-title {
+        font-size: 1.6rem;
+        text-align: center;
+      }
+
+      .progress-line {
+        position: absolute;
+        height: 3px;
+        background: var(--snd-bg-color);
+        width: 80%;
+        top: 25px;
+        left: 10%;
+        z-index: 0;
+      }
+
+      .progress-line span {
+        display: block;
+        height: 100%;
+        width: 33.33%;
+        background: var(--main-color);
+        transition: all 0.4s ease;
+      }
+
+      .registration-form {
+        background: var(--snd-bg-color);
+        border-radius: 20px;
+        padding: 4rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .form-title {
+        font-size: 3rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        color: var(--main-color);
+      }
+
+      .form-group {
+        margin-bottom: 2.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: var(--text-color);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 1.5rem;
+        font-size: 1.6rem;
+        background: var(--background);
+        color: var(--text-color);
+        border: 1px solid #333;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        border-color: var(--main-color);
+        box-shadow: 0 0 10px rgba(93, 173, 226, 0.5);
+      }
+
+      .form-row {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .form-row .form-group {
+        flex: 1;
+      }
+
+      .plan-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .plan-card {
+        background: var(--background);
+        border-radius: 15px;
+        padding: 2rem;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .plan-card:hover {
+        border-color: var(--main-color);
+        transform: translateY(-5px);
+      }
+
+      .plan-card.selected {
+        border-color: var(--main-color);
+        box-shadow: 0 0 20px rgba(93, 173, 226, 0.3);
+      }
+
+      .plan-card h3 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+        color: var(--main-color);
+      }
+
+      .plan-card .price {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+      }
+
+      .plan-card ul {
+        margin-bottom: 2rem;
+      }
+
+      .plan-card ul li {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .plan-card ul li i {
+        color: var(--main-color);
+        margin-right: 1rem;
+      }
+
+      .select-plan {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 25px;
+        height: 25px;
+        border: 2px solid var(--main-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .select-plan i {
+        color: var(--main-color);
+        font-size: 1.2rem;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .plan-card.selected .select-plan i {
+        opacity: 1;
+      }
+
+      .form-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 4rem;
+      }
+
+      .btn-prev {
+        background: var(--snd-bg-color);
+        color: var(--main-color);
+        border: 2px solid var(--main-color);
+      }
+
+      .btn-prev:hover {
+        background: rgba(93, 173, 226, 0.1);
+      }
+
+      .btn-next {
+        background: var(--main-color);
+        color: var(--background);
+      }
+
+      .payment-methods {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .payment-method {
+        background: var(--background);
+        border-radius: 15px;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .payment-method:hover {
+        border-color: var(--main-color);
+      }
+
+      .payment-method.selected {
+        border-color: var(--main-color);
+        box-shadow: 0 0 20px rgba(93, 173, 226, 0.3);
+      }
+
+      .payment-method i {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        color: var(--main-color);
+      }
+
+      .payment-method h4 {
+        font-size: 1.8rem;
+        text-align: center;
+      }
+
+      .summary-box {
+        background: var(--background);
+        border-radius: 15px;
+        padding: 3rem;
+        margin-top: 3rem;
+      }
+
+      .summary-title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: var(--main-color);
+        border-bottom: 1px solid #333;
+        padding-bottom: 1rem;
+      }
+
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        font-size: 1.6rem;
+      }
+
+      .summary-total {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid #333;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .confirmation-icon {
+        font-size: 8rem;
+        color: var(--main-color);
+        margin-bottom: 3rem;
+      }
+
+      .confirmation-message {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .confirmation-message h2 {
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+        color: var(--main-color);
+      }
+
+      .confirmation-message p {
+        font-size: 1.8rem;
+        margin-bottom: 3rem;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 768px) {
+        .registration-steps {
+          flex-direction: column;
+          align-items: center;
+          gap: 3rem;
+        }
+
+        .progress-line {
+          width: 3px;
+          height: 80%;
+          left: 50%;
+          top: 10%;
+        }
+
+        .form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+
+        .form-actions {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .btn-prev,
+        .btn-next {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="index.html" class="logo">MT <span>FITNESS</span></a>
+      <div class="menu" id="menu-icon">
+        <i class="bx bx-menu"></i>
+        <ul class="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#plans">Plans</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <section class="registration-hero">
+      <div>
+        <h1>Bắt Đầu Hành Trình Của Bạn</h1>
+        <p>
+          Đăng ký ngay để nhận ưu đãi đặc biệt và bắt đầu xây dựng cơ thể mơ ước
+          của bạn
+        </p>
+      </div>
+    </section>
+
+    <div class="registration-container">
+      <div class="registration-steps">
+        <div class="step active" data-step="1">
+          <div class="step-number">1</div>
+          <div class="step-title">Thông Tin Cá Nhân</div>
+        </div>
+        <div class="step" data-step="2">
+          <div class="step-number">2</div>
+          <div class="step-title">Chọn Gói Tập</div>
+        </div>
+        <div class="step" data-step="3">
+          <div class="step-number">3</div>
+          <div class="step-title">Thanh Toán</div>
+        </div>
+        <div class="progress-line"><span style="width: 0%"></span></div>
+      </div>
+
+      <!-- Step 1: Personal Information -->
+      <div class="registration-form step-content" id="step-1">
+        <h2 class="form-title">Thông Tin Cá Nhân</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">Họ</label>
+            <input type="text" id="firstName" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Tên</label>
+            <input type="text" id="lastName" class="form-control" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Số Điện Thoại</label>
+          <input type="tel" id="phone" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label for="dob">Ngày Sinh</label>
+          <input type="date" id="dob" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Giới Tính</label>
+          <select id="gender" class="form-control" required>
+            <option value="">Chọn giới tính</option>
+            <option value="male">Nam</option>
+            <option value="female">Nữ</option>
+            <option value="other">Khác</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-next" onclick="nextStep(1)">
+            Tiếp Theo <i class="bx bx-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Select Plan -->
+      <div
+        class="registration-form step-content"
+        id="step-2"
+        style="display: none"
+      >
+        <h2 class="form-title">Chọn Gói Tập Của Bạn</h2>
+
+        <div class="plan-cards">
+          <div class="plan-card" onclick="selectPlan(this, 'basic')">
+            <div class="select-plan"><i class="bx bx-check"></i></div>
+            <h3>BASIC</h3>
+            <div class="price">$40 / Tháng</div>
+            <ul>
+              <li><i class="bx bx-check"></i> Smart Workout Plan</li>
+              <li><i class="bx bx-check"></i> At Home Workout</li>
+            </ul>
+          </div>
+
+          <div class="plan-card selected" onclick="selectPlan(this, 'pro')">
+            <div class="select-plan"><i class="bx bx-check"></i></div>
+            <h3>PRO</h3>
+            <div class="price">$65 / Tháng</div>
+            <ul>
+              <li><i class="bx bx-check"></i> Pro GYMS</li>
+              <li><i class="bx bx-check"></i> Boxing</li>
+              <li><i class="bx bx-check"></i> Smart Workout Plan</li>
+              <li><i class="bx bx-check"></i> At Home Workout</li>
+            </ul>
+          </div>
+
+          <div class="plan-card" onclick="selectPlan(this, 'premium')">
+            <div class="select-plan"><i class="bx bx-check"></i></div>
+            <h3>PREMIUM</h3>
+            <div class="price">$120 / Tháng</div>
+            <ul>
+              <li><i class="bx bx-check"></i> ELITE GYMS and Classes</li>
+              <li><i class="bx bx-check"></i> Pro GYMS</li>
+              <li><i class="bx bx-check"></i> Boxing</li>
+              <li><i class="bx bx-check"></i> Smart Workout Plan</li>
+              <li><i class="bx bx-check"></i> At Home Workout</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="agreeTerms" required />
+            Tôi đồng ý với
+            <a href="#" style="color: var(--main-color)"
+              >Điều khoản và Điều kiện</a
+            >
+            của MT FITNESS
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-prev" onclick="prevStep(2)">
+            <i class="bx bx-chevron-left"></i> Quay Lại
+          </button>
+          <button class="btn btn-next" onclick="nextStep(2)">
+            Tiếp Theo <i class="bx bx-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Payment -->
+      <div
+        class="registration-form step-content"
+        id="step-3"
+        style="display: none"
+      >
+        <h2 class="form-title">Phương Thức Thanh Toán</h2>
+
+        <div class="payment-methods">
+          <div
+            class="payment-method selected"
+            onclick="selectPayment(this, 'credit')"
+          >
+            <i class="bx bx-credit-card"></i>
+            <h4>Thẻ Tín Dụng</h4>
+          </div>
+
+          <div class="payment-method" onclick="selectPayment(this, 'paypal')">
+            <i class="bx bxl-paypal"></i>
+            <h4>PayPal</h4>
+          </div>
+
+          <div class="payment-method" onclick="selectPayment(this, 'bank')">
+            <i class="bx bx-transfer"></i>
+            <h4>Chuyển Khoản</h4>
+          </div>
+        </div>
+
+        <!-- Credit Card Form (shown when credit card is selected) -->
+        <div id="credit-card-form">
+          <div class="form-group">
+            <label for="cardNumber">Số Thẻ</label>
+            <input
+              type="text"
+              id="cardNumber"
+              class="form-control"
+              placeholder="1234 5678 9012 3456"
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cardExpiry">Ngày Hết Hạn</label>
+              <input
+                type="text"
+                id="cardExpiry"
+                class="form-control"
+                placeholder="MM/YY"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="cardCvc">Mã CVC</label>
+              <input
+                type="text"
+                id="cardCvc"
+                class="form-control"
+                placeholder="123"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cardName">Tên Trên Thẻ</label>
+            <input type="text" id="cardName" class="form-control" />
+          </div>
+        </div>
+
+        <!-- Summary Box -->
+        <div class="summary-box">
+          <h3 class="summary-title">Tóm Tắt Đơn Hàng</h3>
+
+          <div class="summary-item">
+            <span>Gói Tập:</span>
+            <span id="summary-plan">PRO - $65/tháng</span>
+          </div>
+
+          <div class="summary-item">
+            <span>Phí Đăng Ký:</span>
+            <span>$0</span>
+          </div>
+
+          <div class="summary-item">
+            <span>Thuế (10%):</span>
+            <span>$6.5</span>
+          </div>
+
+          <div class="summary-total">
+            <span>Tổng Cộng:</span>
+            <span>$71.5</span>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-prev" onclick="prevStep(3)">
+            <i class="bx bx-chevron-left"></i> Quay Lại
+          </button>
+          <button class="btn btn-next" onclick="completeRegistration()">
+            Hoàn Thành Đăng Ký <i class="bx bx-check"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 4: Confirmation -->
+      <div
+        class="registration-form step-content"
+        id="step-4"
+        style="display: none"
+      >
+        <div class="confirmation-message">
+          <div class="confirmation-icon">
+            <i class="bx bx-check-circle"></i>
+          </div>
+          <h2>Đăng Ký Thành Công!</h2>
+          <p>
+            Cảm ơn bạn đã đăng ký khóa học tại MT FITNESS. Chúng tôi đã gửi
+            thông tin xác nhận đến email của bạn. Hãy kiểm tra hộp thư đến và
+            làm theo hướng dẫn để hoàn tất quá trình đăng ký.
+          </p>
+          <p>
+            Nhân viên của chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ để
+            hướng dẫn các bước tiếp theo.
+          </p>
+          <a href="index.html" class="btn">Quay Về Trang Chủ</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="social">
+        <a href="#"><i class="bx bxl-facebook-circle"></i></a>
+        <a href="#"><i class="bx bxl-instagram-alt"></i></a>
+        <a href="#"><i class="bx bxl-gmail"></i></a>
+      </div>
+      <p class="copyright">&copy; MT Fitness - All Rights Reserved</p>
+      <div class="fixed-arrow">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="script.js"></script>
+    <script>
+      // Registration Form Script
+      let currentStep = 1;
+      let selectedPlan = "pro";
+      let selectedPayment = "credit";
+
+      function updateProgressLine() {
+        const progressPercent = ((currentStep - 1) / 2) * 100;
+        document.querySelector(
+          ".progress-line span"
+        ).style.width = `${progressPercent}%`;
+      }
+
+      function updateStepIndicator() {
+        document.querySelectorAll(".step").forEach((step) => {
+          const stepNumber = parseInt(step.getAttribute("data-step"));
+          if (stepNumber < currentStep) {
+            step.classList.add("completed");
+            step.classList.remove("active");
+          } else if (stepNumber === currentStep) {
+            step.classList.add("active");
+            step.classList.remove("completed");
+          } else {
+            step.classList.remove("active", "completed");
+          }
+        });
+      }
+
+      function showStep(stepNumber) {
+        document.querySelectorAll(".step-content").forEach((step) => {
+          step.style.display = "none";
+        });
+        document.getElementById(`step-${stepNumber}`).style.display = "block";
+        currentStep = stepNumber;
+        updateStepIndicator();
+        updateProgressLine();
+      }
+
+      function nextStep(current) {
+        // Validate current step before proceeding
+        if (current === 1) {
+          // Validate personal info form
+          const requiredFields = [
+            "firstName",
+            "lastName",
+            "email",
+            "phone",
+            "dob",
+            "gender",
+          ];
+          let isValid = true;
+
+          requiredFields.forEach((field) => {
+            const element = document.getElementById(field);
+            if (!element.value) {
+              element.style.borderColor = "red";
+              isValid = false;
+            } else {
+              element.style.borderColor = "#333";
+            }
+          });
+
+          if (!isValid) {
+            alert("Vui lòng điền đầy đủ thông tin cá nhân");
+            return;
+          }
+        } else if (current === 2) {
+          // Check if terms are agreed
+          if (!document.getElementById("agreeTerms").checked) {
+            alert("Vui lòng đồng ý với điều khoản và điều kiện của chúng tôi");
+            return;
+          }
+        }
+
+        showStep(current + 1);
+      }
+
+      function prevStep(current) {
+        showStep(current - 1);
+      }
+
+      function selectPlan(element, plan) {
+        document.querySelectorAll(".plan-card").forEach((card) => {
+          card.classList.remove("selected");
+        });
+        element.classList.add("selected");
+        selectedPlan = plan;
+
+        // Update summary
+        let planName, planPrice;
+        switch (plan) {
+          case "basic":
+            planName = "BASIC";
+            planPrice = 40;
+            break;
+          case "pro":
+            planName = "PRO";
+            planPrice = 65;
+            break;
+          case "premium":
+            planName = "PREMIUM";
+            planPrice = 120;
+            break;
+        }
+
+        document.getElementById(
+          "summary-plan"
+        ).textContent = `${planName} - $${planPrice}/tháng`;
+        document.querySelector(
+          ".summary-item:nth-child(3) span:last-child"
+        ).textContent = `$${(planPrice * 0.1).toFixed(2)}`;
+        document.querySelector(
+          ".summary-total span:last-child"
+        ).textContent = `$${(planPrice * 1.1).toFixed(2)}`;
+      }
+
+      function selectPayment(element, method) {
+        document.querySelectorAll(".payment-method").forEach((method) => {
+          method.classList.remove("selected");
+        });
+        element.classList.add("selected");
+        selectedPayment = method;
+
+        // Show/hide payment forms
+        document.getElementById("credit-card-form").style.display =
+          method === "credit" ? "block" : "none";
+      }
+
+      function completeRegistration() {
+        // Here you would typically send the data to your server
+        // For this demo, we'll just show the confirmation
+        showStep(4);
+      }
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", function () {
+        updateStepIndicator();
+        updateProgressLine();
+      });
+    </script>
+  </body>
+</html>
