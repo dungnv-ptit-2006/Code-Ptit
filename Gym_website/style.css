@@ -186,100 +186,298 @@ span {
 .btn:hover {
   color: var(--text-color);
 }
+/* Replace the current services CSS with this */
 
 .services {
   background: var(--snd-bg-color);
+  padding: 8rem 8% 6rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.heading {
+.services-header {
   text-align: center;
-  font-size: 5.5rem;
+  margin-bottom: 5rem;
+  font-size: 25px;
+}
+
+.services-header .subheading {
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 1.5rem;
+  font-weight: 300;
 }
 
 .services-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2.3rem;
-  margin-top: 4.1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 4rem;
 }
 
-.row {
-  background: var(--background);
-  border-radius: 27px;
-  border: 1px solid transparent;
-  box-shadow: 0 0 5px var(--main-color);
-  padding: 20px;
+.service-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 350px;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(93, 173, 226, 0.3);
+}
+
+.service-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.service-card:hover img {
+  transform: scale(1.1);
+}
+
+.service-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
   transition: all 0.3s ease;
 }
 
-.row img {
-  width: 100%;
-  border-radius: 27px;
-  margin-bottom: 1.4rem;
+.service-icon i {
+  font-size: 2.5rem;
+  color: var(--main-color);
 }
 
-.row h4 {
-  font-size: 25px;
-  font-weight: 500;
+.service-card:hover .service-icon {
+  background: var(--main-color);
+}
+
+.service-card:hover .service-icon i {
+  color: #000;
+}
+
+.service-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  padding: 30px;
+  transform: translateY(100px);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.service-card:hover .service-overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.service-overlay h4 {
+  font-size: 2.2rem;
+  color: var(--main-color);
   margin-bottom: 1rem;
-  line-height: 1.4;
+  font-weight: 600;
 }
 
-.row:hover {
-  border: 1px solid var(--main-color);
-  transform: translateY(-5px) scale(1.04);
-  cursor: pointer;
-}
-
-.about {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.about-img img {
-  width: 50vw;
-  border: 2px solid var(--text-color);
-  border-radius: 1rem;
-  transition: 0.5s ease;
-}
-
-.about-img img:hover {
-  transform: scale(1.01);
-  border: 2px solid var(--text-color);
-}
-
-.about-content .heading {
-  text-align: center;
-  font-size: 4rem;
-}
-.about-content {
-  padding: 0 3 rem;
-}
-
-.about-content h2 {
-  text-align: left;
-  line-height: 1.2;
-}
-
-.about-content p {
-  text-align: justify;
-  line-height: 1.7;
-  color: var(--text-color);
-  text-indent: 1.5rem;
+.service-overlay p {
   font-size: 1.5rem;
-  margin: 1rem 2rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
 }
 
-.btn {
-  text-align: justify;
-  margin-left: 7.5rem;
+.service-btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: var(--main-color);
+  color: #000;
+  border-radius: 30px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
+
+.service-btn:hover {
+  background: #fff;
+  box-shadow: 0 0 15px var(--main-color);
+}
+
+/* ------------------------------------------about------------------ */
+
+/* Replace the current About CSS with this */
+.about {
+  background: var(--background);
+  padding: 8rem 8% 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.section-title span {
+  color: var(--main-color);
+}
+
+.section-subtitle {
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 300;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  margin-bottom: 6rem;
+}
+
+.about-features {
+  flex: 0.7;
+  min-width: 300px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+}
+
+.feature-card {
+  background: var(--snd-bg-color);
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  transition: all 0.4s ease;
+  text-align: center;
+  border: 1px solid rgba(93, 173, 226, 0.1);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(93, 173, 226, 0.2);
+  border: 1px solid var(--main-color);
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  background: rgba(93, 173, 226, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  font-size: 2.5rem;
+  color: var(--main-color);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  background: var(--main-color);
+  color: #000;
+  transform: rotateY(180deg);
+}
+
+.feature-card h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.feature-card p {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.about-image img {
+  width: 100%;
+  height: 1000px;
+  transition: transform 0.5s ease;
+}
+
+.about-image:hover img {
+  transform: scale(1.05);
+}
+
+.about-stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 5rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 2rem;
+  min-width: 200px;
+  background: var(--snd-bg-color);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(93, 173, 226, 0.2);
+}
+
+.stat-item h4 {
+  font-size: 3.5rem;
+  color: var(--main-color);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.stat-item p {
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
 /* ------------------------------------------plans ------------------*/
 
 .plans {
   background: var(--snd-bg-color);
+  font-size: 25px;
+}
+.plans h2 {
+  text-align: center;
+  font-size: 4rem;
 }
 
 .plans-content {
@@ -347,72 +545,252 @@ span {
   border: 1px solid var(--main-color);
   transform: translateY(-5px) scale(1.03);
 }
-
-/* Reviews Section Code */
-
-.reviews {
-  background: var(--background);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 0;
+/* ------------------------------------------reviews ------------------*/
+.testimonials {
+  background: linear-gradient(135deg, #0f0f15 0%, #1a1a2e 100%);
+  padding: 8rem 5%;
+  position: relative;
+  overflow: hidden;
 }
 
-.reviews-box {
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.testimonials::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  z-index: 0;
 }
 
-.reviews .heading {
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonials-header {
+  text-align: center;
   margin-bottom: 5rem;
 }
 
-.reviews-box img {
-  width: 20rem;
-  border-radius: 50%;
-  border: 2px solid var(--main-color);
-}
-
-.wrapper1 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
-}
-
-.reviews-item {
-  min-height: 450px;
-  min-width: 280px;
-  background: var(--snd-bg-color);
-  border: 3px solid rgba(238, 238, 238, 0.3);
-  border-radius: 2rem;
-  margin: 0 2rem;
-  padding: 30px 60px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+.testimonials-header h2 {
+  font-size: 3.5rem;
   color: #fff;
-  transition: 0.5s ease-in-out;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
 
-.reviews-item p {
-  font-size: 1.5rem;
-  line-height: 1.3;
+.testimonials-header h2 span {
+  color: var(--main-color);
+  position: relative;
 }
 
-.reviews-item:hover {
+.testimonials-header h2 span::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--main-color);
+  border-radius: 3px;
+}
+
+.testimonials-header p {
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+}
+
+.divider {
+  width: 80px;
+  height: 4px;
+  background: var(--main-color);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 5rem;
+}
+
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(93, 173, 226, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(93, 173, 226, 0.2);
+  border: 1px solid rgba(93, 173, 226, 0.3);
+}
+
+.card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(93, 173, 226, 0.1) 0%,
+    rgba(93, 173, 226, 0) 100%
+  );
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.testimonial-card:hover .card-bg {
+  opacity: 1;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1.5rem;
   border: 3px solid var(--main-color);
-  transform: scale(1.05);
 }
 
-#Star {
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-info h4 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.stars {
+  display: flex;
+}
+
+.star {
+  color: #555;
+  font-size: 1.6rem;
+  margin-right: 3px;
+}
+
+.star.filled {
   color: gold;
-  font-size: 2rem;
+}
+
+.star.half {
+  position: relative;
+}
+
+.star.half::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  width: 50%;
+  overflow: hidden;
+  color: gold;
+}
+
+.card-body p {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-left: 2rem;
+}
+.card-footer {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.6);
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+}
+
+/* Stats Container */
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+}
+
+.stat-box {
+  text-align: center;
+  padding: 2rem 3rem;
+  min-width: 180px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  border: 1px solid rgba(93, 173, 226, 0.2);
+  transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+  background: rgba(93, 173, 226, 0.1);
+  transform: translateY(-5px);
+}
+
+.stat-value {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--main-color);
+  margin-bottom: 0.5rem;
+}
+
+.stat-value span {
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.stat-label {
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .testimonials-header h2 {
+    font-size: 2.8rem;
+  }
+
+  .testimonials-header p {
+    font-size: 1.6rem;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-box {
+    padding: 1.5rem 2rem;
+    min-width: 120px;
+  }
+
+  .stat-value {
+    font-size: 2.8rem;
+  }
 }
 /* ------------------------------------blog----------------------- */
 .blog {

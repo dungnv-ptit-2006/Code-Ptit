@@ -83,11 +83,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentIndex = 3; // Bắt đầu từ item gốc đầu tiên
     const itemsPerPage = 4;
     const totalOriginalItems = items.length;
-    const totalDots = 5; // Tổng số dots mong muốn
+    const totalDots = 6; // Tổng số dots mong muốn
     let autoSlideInterval;
     const autoSlideDelay = 2000; // 3 giây tự động chuyển slide
 
-    // Tạo 5 dots
+    // Tạo 6 dots
     function createDots() {
       dotsContainer.innerHTML = "";
       for (let i = 0; i < totalDots; i++) {
