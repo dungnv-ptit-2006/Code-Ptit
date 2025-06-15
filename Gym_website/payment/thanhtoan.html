@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh Toán - MT FITNESS</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style: none;
+        border: none;
+        outline: none;
+        scroll-behavior: smooth;
+        font-family: -apple-system, sans-serif;
+      }
+
+      :root {
+        --background: #000;
+        --snd-bg-color: #111;
+        --text-color: #fff;
+        --main-color: #5dade2;
+        --success-color: #28a745;
+        --warning-color: #ffc107;
+        --danger-color: #dc3545;
+      }
+
+      body {
+        background: linear-gradient(
+          135deg,
+          var(--background) 0%,
+          var(--snd-bg-color) 100%
+        );
+        color: var(--text-color);
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.02"/><circle cx="75" cy="75" r="1" fill="%235dade2" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        z-index: -1;
+      }
+
+      header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 9%;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(93, 173, 226, 0.2);
+      }
+
+      .logo {
+        font-size: 3rem;
+        color: var(--text-color);
+        font-weight: bolder;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+        text-shadow: 0 0 20px var(--main-color);
+      }
+
+      .logo span {
+        color: var(--main-color);
+      }
+
+      .back-btn {
+        padding: 1rem 2rem;
+        background: linear-gradient(45deg, var(--main-color), #74c0fc);
+        color: var(--background);
+        border-radius: 50px;
+        font-size: 1.6rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(93, 173, 226, 0.3);
+        cursor: pointer;
+      }
+
+      .back-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(93, 173, 226, 0.5);
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 12rem 2rem 4rem;
+      }
+
+      .page-title {
+        text-align: center;
+        font-size: 4.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, var(--main-color), #74c0fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .page-subtitle {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 4rem;
+        opacity: 0.8;
+      }
+
+      .payment-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .order-summary {
+        background: rgba(17, 17, 17, 0.9);
+        padding: 3rem;
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(93, 173, 226, 0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        height: fit-content;
+        position: sticky;
+        top: 12rem;
+      }
+
+      .payment-form {
+        background: rgba(17, 17, 17, 0.9);
+        padding: 3rem;
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(93, 173, 226, 0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: var(--main-color);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .section-title i {
+        font-size: 2.8rem;
+      }
+
+      .order-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .order-item:last-child {
+        border-bottom: none;
+      }
+
+      .item-info h4 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .item-info p {
+        font-size: 1.4rem;
+        opacity: 0.7;
+      }
+
+      .item-price {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--main-color);
+      }
+
+      .customer-info {
+        background: rgba(93, 173, 226, 0.1);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid var(--main-color);
+        margin-bottom: 2rem;
+      }
+
+      .customer-info h4 {
+        color: var(--main-color);
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .customer-info p {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .total-section {
+        background: rgba(93, 173, 226, 0.1);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid var(--main-color);
+        margin-top: 2rem;
+      }
+
+      .total-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        font-size: 1.6rem;
+      }
+
+      .total-row.final {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--main-color);
+        border-top: 2px solid rgba(93, 173, 226, 0.3);
+        padding-top: 1rem;
+        margin-top: 1rem;
+      }
+
+      .payment-methods {
+        margin-bottom: 3rem;
+      }
+
+      .method-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .payment-method {
+        background: rgba(0, 0, 0, 0.5);
+        border: 2px solid rgba(93, 173, 226, 0.3);
+        border-radius: 15px;
+        padding: 2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      .payment-method:hover {
+        border-color: var(--main-color);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(93, 173, 226, 0.3);
+      }
+
+      .payment-method.active {
+        border-color: var(--main-color);
+        background: rgba(93, 173, 226, 0.1);
+      }
+
+      .payment-method i {
+        font-size: 3rem;
+        color: var(--main-color);
+        margin-bottom: 1rem;
+      }
+
+      .payment-method h4 {
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+
+      .card-form {
+        display: none;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 2rem;
+        border-radius: 15px;
+        margin-top: 2rem;
+      }
+
+      .card-form.active {
+        display: block;
+        animation: slideDown 0.3s ease;
+      }
+
+      .qr-payment {
+        display: none;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 2rem;
+        border-radius: 15px;
+        margin-top: 2rem;
+        text-align: center;
+      }
+
+      .qr-payment.active {
+        display: block;
+        animation: slideDown 0.3s ease;
+      }
+
+      .qr-code {
+        width: 200px;
+        height: 200px;
+        margin: 20px auto;
+        display: block;
+        border: 1px solid rgba(93, 173, 226, 0.5);
+        border-radius: 10px;
+        padding: 10px;
+        background: white;
+      }
+
+      .bank-info {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background: rgba(93, 173, 226, 0.1);
+        border-radius: 10px;
+        border: 1px solid rgba(93, 173, 226, 0.3);
+      }
+
+      .bank-info p {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+        text-align: left;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .form-group {
+        margin-bottom: 2rem;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 0.8rem;
+        color: var(--main-color);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 1.2rem;
+        background: rgba(0, 0, 0, 0.5);
+        border: 2px solid rgba(93, 173, 226, 0.3);
+        border-radius: 10px;
+        color: var(--text-color);
+        font-size: 1.4rem;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        border-color: var(--main-color);
+        box-shadow: 0 0 20px rgba(93, 173, 226, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .security-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: rgba(40, 167, 69, 0.1);
+        padding: 1.5rem;
+        border-radius: 10px;
+        border: 1px solid var(--success-color);
+        margin-bottom: 2rem;
+      }
+
+      .security-info i {
+        font-size: 2rem;
+        color: var(--success-color);
+      }
+
+      .security-info p {
+        font-size: 1.4rem;
+        color: var(--success-color);
+      }
+
+      .process-btn {
+        width: 100%;
+        padding: 2rem;
+        background: linear-gradient(45deg, var(--success-color), #20c997);
+        color: var(--text-color);
+        border-radius: 50px;
+        font-size: 2rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .process-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(40, 167, 69, 0.6);
+      }
+
+      .process-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .loading {
+        display: none;
+      }
+
+      .loading.active {
+        display: inline-block;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .success-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+      }
+
+      .success-modal.active {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .modal-content {
+        background: var(--snd-bg-color);
+        padding: 4rem;
+        border-radius: 20px;
+        text-align: center;
+        border: 2px solid var(--success-color);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        max-width: 500px;
+        width: 90%;
+      }
+
+      .modal-content i {
+        font-size: 6rem;
+        color: var(--success-color);
+        margin-bottom: 2rem;
+      }
+
+      .modal-content h2 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--success-color);
+      }
+
+      .modal-content p {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+        opacity: 0.8;
+      }
+
+      .modal-btn {
+        padding: 1.5rem 3rem;
+        background: linear-gradient(45deg, var(--main-color), #74c0fc);
+        color: var(--background);
+        border-radius: 50px;
+        font-size: 1.6rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .modal-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(93, 173, 226, 0.5);
+      }
+
+      .floating-elements {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .floating-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(
+          45deg,
+          rgba(93, 173, 226, 0.1),
+          rgba(116, 192, 252, 0.1)
+        );
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .floating-circle:nth-child(1) {
+        width: 100px;
+        height: 100px;
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .floating-circle:nth-child(2) {
+        width: 150px;
+        height: 150px;
+        top: 60%;
+        right: 10%;
+        animation-delay: 2s;
+      }
+
+      .floating-circle:nth-child(3) {
+        width: 80px;
+        height: 80px;
+        bottom: 20%;
+        left: 70%;
+        animation-delay: 4s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .payment-container {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        .page-title {
+          font-size: 3.5rem;
+        }
+
+        .payment-form,
+        .order-summary {
+          padding: 2rem;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .method-grid {
+          grid-template-columns: 1fr;
+        }
+
+        header {
+          padding: 1.5rem 5%;
+        }
+
+        .logo {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="floating-elements">
+      <div class="floating-circle"></div>
+      <div class="floating-circle"></div>
+      <div class="floating-circle"></div>
+    </div>
+
+    <header>
+      <a href="#" class="logo">MT <span>FITNESS</span></a>
+      <button class="back-btn" onclick="goBack()">
+        <i class="bx bx-arrow-back"></i> Quay Lại
+      </button>
+    </header>
+
+    <div class="container">
+      <h1 class="page-title">Thanh Toán</h1>
+      <p class="page-subtitle">Hoàn tất đăng ký khóa học của bạn</p>
+
+      <div class="payment-container">
+        <!-- Order Summary -->
+        <div class="order-summary">
+          <h2 class="section-title">
+            <i class="bx bx-receipt"></i>
+            Tổng Quan Đơn Hàng
+          </h2>
+
+          <div id="customerInfo" class="customer-info">
+            <h4>Thông Tin Khách Hàng</h4>
+            <p><span>Họ tên:</span> <span id="customerName">-</span></p>
+            <p><span>Email:</span> <span id="customerEmail">-</span></p>
+            <p><span>Điện thoại:</span> <span id="customerPhone">-</span></p>
+          </div>
+
+          <div class="order-item">
+            <div class="item-info">
+              <h4 id="planName">Gói Basic</h4>
+              <p>Thời hạn: 1 tháng</p>
+              <p>Bắt đầu: Ngay sau khi thanh toán</p>
+            </div>
+            <div class="item-price" id="planPrice">$40</div>
+          </div>
+
+          <div class="total-section">
+            <div class="total-row">
+              <span>Giá gói:</span>
+              <span id="subtotal">$40</span>
+            </div>
+            <div class="total-row">
+              <span>Thuế (10%):</span>
+              <span id="tax">$4</span>
+            </div>
+            <div class="total-row">
+              <span>Phí xử lý:</span>
+              <span>$2</span>
+            </div>
+            <div class="total-row final">
+              <span>Tổng cộng:</span>
+              <span id="finalTotal">$46</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Form -->
+        <div class="payment-form">
+          <h2 class="section-title">
+            <i class="bx bx-credit-card"></i>
+            Phương Thức Thanh Toán
+          </h2>
+
+          <div class="payment-methods">
+            <div class="method-grid">
+              <div class="payment-method active" data-method="card">
+                <i class="bx bx-credit-card"></i>
+                <h4>Thẻ Tín Dụng</h4>
+              </div>
+              <div class="payment-method" data-method="paypal">
+                <i class="bx bxl-paypal"></i>
+                <h4>PayPal</h4>
+              </div>
+              <div class="payment-method" data-method="bank">
+                <i class="bx bx-bank"></i>
+                <h4>Chuyển Khoản</h4>
+              </div>
+              <div class="payment-method" data-method="wallet">
+                <i class="bx bx-wallet"></i>
+                <h4>Ví Điện Tử</h4>
+              </div>
+            </div>
+
+            <!-- Card Form -->
+            <div class="card-form active" id="cardForm">
+              <div class="form-group">
+                <label for="cardNumber">Số Thẻ *</label>
+                <input
+                  type="text"
+                  id="cardNumber"
+                  class="form-control"
+                  placeholder="1234 5678 9012 3456"
+                  maxlength="19"
+                  required
+                />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="expiryDate">Ngày Hết Hạn *</label>
+                  <input
+                    type="text"
+                    id="expiryDate"
+                    class="form-control"
+                    placeholder="MM/YY"
+                    maxlength="5"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="cvv">CVV *</label>
+                  <input
+                    type="text"
+                    id="cvv"
+                    class="form-control"
+                    placeholder="123"
+                    maxlength="4"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cardName">Tên Trên Thẻ *</label>
+                <input
+                  type="text"
+                  id="cardName"
+                  class="form-control"
+                  placeholder="NGUYEN VAN A"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- QR Payment -->
+            <div class="qr-payment" id="qrPayment">
+              <div class="security-info">
+                <i class="bx bx-qr-scan"></i>
+                <p>Vui lòng quét mã QR để hoàn tất thanh toán</p>
+              </div>
+              <img src="../assets/qr.png" alt="QR Code" class="qr-code" />
+              <div class="bank-info">
+                <p><strong>Số tài khoản:</strong> 9373836240</p>
+                <p><strong>Ngân hàng:</strong> MT FITNESS Bank</p>
+                <p><strong>Chủ tài khoản:</strong> CÔNG TY TNHH MT FITNESS</p>
+                <p><strong>Nội dung:</strong> Tên KH + Số điện thoại</p>
+              </div>
+              <div class="security-info">
+                <i class="bx bx-time"></i>
+                <p>Mã QR sẽ hết hạn sau 5 phút</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="security-info">
+            <i class="bx bx-shield-check"></i>
+            <p>Thanh toán của bạn được bảo mật với mã hóa SSL 256-bit</p>
+          </div>
+
+          <button type="button" class="process-btn" id="processBtn">
+            <i class="bx bx-lock-alt"></i>
+            <span class="btn-text">Xử Lý Thanh Toán</span>
+            <i class="bx bx-loader-alt loading" id="loadingIcon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+      <div class="modal-content">
+        <i class="bx bx-check-circle"></i>
+        <h2>Thanh Toán Thành Công!</h2>
+        <p>
+          Cảm ơn bạn đã đăng ký khóa học. Chúng tôi đã gửi thông tin chi tiết
+          qua email của bạn.
+        </p>
+        <button class="modal-btn" onclick="goHome()">Về Trang Chủ</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        loadRegistrationData();
+        setupPaymentMethods();
+        setupCardFormatting();
+        setupPaymentProcessing();
+      });
+
+      function loadRegistrationData() {
+        const data = JSON.parse(
+          sessionStorage.getItem("registrationData") || "{}"
+        );
+
+        if (data.planName) {
+          document.getElementById(
+            "planName"
+          ).textContent = `Gói ${data.planName}`;
+          document.getElementById("planPrice").textContent = `$${data.price}`;
+          document.getElementById("subtotal").textContent = `$${data.price}`;
+
+          const tax = Math.round(data.price * 0.1);
+          const total = data.price + tax + 2;
+
+          document.getElementById("tax").textContent = `$${tax}`;
+          document.getElementById("finalTotal").textContent = `$${total}`;
+        }
+
+        if (data.firstName && data.lastName) {
+          document.getElementById(
+            "customerName"
+          ).textContent = `${data.firstName} ${data.lastName}`;
+          document.getElementById("customerEmail").textContent =
+            data.email || "-";
+          document.getElementById("customerPhone").textContent =
+            data.phone || "-";
+        }
+      }
+
+      function setupPaymentMethods() {
+        const methods = document.querySelectorAll(".payment-method");
+        const cardForm = document.getElementById("cardForm");
+        const qrPayment = document.getElementById("qrPayment");
+
+        methods.forEach((method) => {
+          method.addEventListener("click", () => {
+            methods.forEach((m) => m.classList.remove("active"));
+            method.classList.add("active");
+
+            // Ẩn tất cả các form thanh toán
+            cardForm.style.display = "none";
+            qrPayment.style.display = "none";
+
+            const methodType = method.getAttribute("data-method");
+            if (methodType === "card") {
+              cardForm.style.display = "block";
+            }
+          });
+        });
+      }
+
+      function setupCardFormatting() {
+        const cardNumber = document.getElementById("cardNumber");
+        const expiryDate = document.getElementById("expiryDate");
+
+        cardNumber.addEventListener("input", function (e) {
+          let value = e.target.value.replace(/\s/g, "").replace(/[^0-9]/gi, "");
+          let formattedValue = value.match(/.{1,4}/g)?.join(" ") || value;
+          if (formattedValue.length > 19)
+            formattedValue = formattedValue.substr(0, 19);
+          this.value = formattedValue;
+        });
+
+        expiryDate.addEventListener("input", function (e) {
+          let value = e.target.value.replace(/\D/g, "");
+          if (value.length >= 2) {
+            value = value.substring(0, 2) + "/" + value.substring(2, 4);
+          }
+          this.value = value;
+        });
+
+        document.getElementById("cvv").addEventListener("input", function (e) {
+          this.value = this.value.replace(/[^0-9]/g, "");
+        });
+      }
+
+      function setupPaymentProcessing() {
+        document
+          .getElementById("processBtn")
+          .addEventListener("click", processPayment);
+      }
+
+      function processPayment() {
+        const btn = document.getElementById("processBtn");
+        const loadingIcon = document.getElementById("loadingIcon");
+        const btnText = btn.querySelector(".btn-text");
+        const activeMethod = document
+          .querySelector(".payment-method.active")
+          .getAttribute("data-method");
+        const qrPayment = document.getElementById("qrPayment");
+
+        // Validate form nếu là thẻ
+        if (activeMethod === "card" && !validatePaymentForm()) {
+          return;
+        }
+
+        // Start loading
+        btn.disabled = true;
+        loadingIcon.classList.add("active");
+        btnText.textContent = "Đang Xử Lý...";
+
+        if (activeMethod === "bank") {
+          // Hiển thị mã QR sau 1 giây (giả lập xử lý)
+          setTimeout(() => {
+            qrPayment.style.display = "block";
+            btnText.textContent = "Vui Lòng Quét Mã QR";
+            loadingIcon.classList.remove("active");
+
+            // Giả lập thanh toán thành công sau 5 giây
+            setTimeout(() => {
+              showSuccessModal();
+            }, 5000);
+          }, 1000);
+        } else {
+          // Các phương thức khác
+          setTimeout(() => {
+            showSuccessModal();
+          }, 2000);
+        }
+      }
+
+      function validatePaymentForm() {
+        const activeMethod = document
+          .querySelector(".payment-method.active")
+          .getAttribute("data-method");
+
+        if (activeMethod === "card") {
+          const cardNumber = document.getElementById("cardNumber").value;
+          const expiryDate = document.getElementById("expiryDate").value;
+          const cvv = document.getElementById("cvv").value;
+          const cardName = document.getElementById("cardName").value;
+
+          if (!cardNumber || cardNumber.length < 19) {
+            alert("Vui lòng nhập đúng số thẻ");
+            return false;
+          }
+
+          if (!expiryDate || expiryDate.length < 5) {
+            alert("Vui lòng nhập ngày hết hạn");
+            return false;
+          }
+
+          if (!cvv || cvv.length < 3) {
+            alert("Vui lòng nhập CVV");
+            return false;
+          }
+
+          if (!cardName.trim()) {
+            alert("Vui lòng nhập tên trên thẻ");
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      function showSuccessModal() {
+        const btn = document.getElementById("processBtn");
+        const loadingIcon = document.getElementById("loadingIcon");
+        const btnText = btn.querySelector(".btn-text");
+
+        // Reset button
+        btn.disabled = false;
+        loadingIcon.classList.remove("active");
+        btnText.textContent = "Xử Lý Thanh Toán";
+
+        // Show success modal
+        document.getElementById("successModal").classList.add("active");
+
+        // Clear stored data
+        sessionStorage.removeItem("registrationData");
+      }
+
+      function goBack() {
+        window.history.back();
+      }
+
+      function goHome() {
+        window.location.href = "../index.html";
+      }
+
+      // Close modal when clicking outside
+      document
+        .getElementById("successModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            this.classList.remove("active");
+            goHome();
+          }
+        });
+    </script>
+  </body>
+</html>
